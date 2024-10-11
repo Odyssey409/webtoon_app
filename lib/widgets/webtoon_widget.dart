@@ -20,7 +20,7 @@ class Webtoon extends StatelessWidget {
           PageRouteBuilder(
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
-              var begin = const Offset(0.0, 1.0);
+              var begin = const Offset(1.0, 0.0);
               var end = Offset.zero;
               var curve = Curves.ease;
               var tween = Tween(begin: begin, end: end).chain(
@@ -42,20 +42,23 @@ class Webtoon extends StatelessWidget {
       },
       child: Column(
         children: [
-          Container(
-            width: 250,
-            clipBehavior: Clip.hardEdge,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.5),
-                  blurRadius: 15,
-                  offset: const Offset(10, 10),
-                ),
-              ],
+          Hero(
+            tag: id,
+            child: Container(
+              width: 250,
+              clipBehavior: Clip.hardEdge,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.5),
+                    blurRadius: 15,
+                    offset: const Offset(10, 10),
+                  ),
+                ],
+              ),
+              child: Image.network(thumb),
             ),
-            child: Image.network(thumb),
           ),
           const SizedBox(
             height: 10,
